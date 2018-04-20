@@ -39,6 +39,10 @@ class App extends Component {
 		socket.emit('message', message);
 	}
 
+	handlePrivate(message) {
+		
+	}
+
 	handleUserSubmit(name) {
 		this.setState({name});
 		socket.emit('join', name);
