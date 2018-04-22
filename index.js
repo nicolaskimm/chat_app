@@ -29,12 +29,7 @@ io.on('connection', function(socket) {
 			let receiver = msg.substr(0, space);
 			msg = msg.substr(space + 1);
 			const user = userService.getUserByName(receiver);
-			//{name} = userService.getUserByName(socket.name);
-			//console.log(user.id);
-			//console.log(user.name)
 			const {name} = userService.getUserById(socket.id);
-			console.log(receiver)
-			console.log(name)
 
 			socket.to(user.id).emit('message', {
 				text: msg,
