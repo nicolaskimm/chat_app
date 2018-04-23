@@ -7,6 +7,17 @@ const server = http.createServer(app);
 const io = socketIo(server);
 const UsersService = require('./UsersService');
 const userService = new UsersService();
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/chat');
+const Schema = mongoose.Schema;
+
+const chatSchema = new Schema({
+	username: String,
+	msg: String,
+	created: Date
+});
+
+const Chat = mongoose.model('Message', chatSchema);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -37,9 +48,13 @@ io.on('connection', function(socket) {
 			});			
 		} else {
 			const {name} = userService.getUserById(socket.id);
-			socket.broadcast.emit('message', {
-				text: message.text,
-				from: name
+			const newMsg = new Chat({msg: message.text, username: name});
+			newMsg.save(function(err){
+				if (err) throw err;
+				socket.broadcast.emit('message', {
+					text: message.text,
+					from: name
+				});
 			});
 		}
 	});
