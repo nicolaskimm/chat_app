@@ -8,13 +8,19 @@ const io = socketIo(server);
 const UsersService = require('./UsersService');
 const userService = new UsersService();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/chat');
+mongoose.connect('mongodb://localhost/chat', function(err){
+	if(err){
+		console.log(err)
+	} else {
+		console.log('db loaded')
+	}
+});
+
 const Schema = mongoose.Schema;
 
 const chatSchema = new Schema({
 	username: String,
-	msg: String,
-	created: Date
+	msg: String
 });
 
 const Chat = mongoose.model('Message', chatSchema);
@@ -65,6 +71,18 @@ io.on('connection', function(socket) {
 		});
 		io.emit('update', {
 			users: userService.getAllUsers()
+		});
+		Chat.find({}, function (err, array) {
+			if (err) throw err;
+			//console.log(array);
+			//console.log(array[0].msg)
+			for (let i = array.length - 1 ; i > -1 ; i--) {
+				//console.log(array[i].msg);
+				socket.emit('message', {
+					text: array[i].msg,
+					from: array[i].username
+				})
+			};
 		});
 	});
 });
