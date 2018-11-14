@@ -20,7 +20,8 @@ const Schema = mongoose.Schema;
 
 const chatSchema = new Schema({
 	username: String,
-	msg: String
+	msg: String,
+	rooms: String
 });
 
 const Chat = mongoose.model('Message', chatSchema);
@@ -32,12 +33,14 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket) {
+
 	socket.on('disconnect', () => {
 		userService.removeUser(socket.id);
 		socket.broadcast.emit('update', {
 			users: userService.getAllUsers()
 		});
 	});
+
 	socket.on('message', function(message){
 		let msg = message.text.trim();
 		if (msg.substr(0, 1) === '@') {
@@ -50,7 +53,7 @@ io.on('connection', function(socket) {
 
 			socket.to(user.id).emit('message', {
 				text: msg,
-				from: name
+				from: name + ' (whispering)'
 			});			
 		} else {
 			const {name} = userService.getUserById(socket.id);
@@ -64,20 +67,19 @@ io.on('connection', function(socket) {
 			});
 		}
 	});
-	socket.on('join', function(name){
+
+	socket.on('join', function(name, room){
 		userService.addUser({
 			id: socket.id,
-			name
+			name,
 		});
 		io.emit('update', {
 			users: userService.getAllUsers()
 		});
 		Chat.find({}, function (err, array) {
 			if (err) throw err;
-			//console.log(array);
-			//console.log(array[0].msg)
+
 			for (let i = array.length - 1 ; i > -1 ; i--) {
-				//console.log(array[i].msg);
 				socket.emit('message', {
 					text: array[i].msg,
 					from: array[i].username

@@ -15,7 +15,7 @@ class App extends Component {
 			users: [], 
 			messages: [], 
 			text: '', 
-			name: ''
+			name: '',
 		};
 	}
 
@@ -39,10 +39,6 @@ class App extends Component {
 		socket.emit('message', message);
 	}
 
-	handlePrivate(message) {
-		
-	}
-
 	handleUserSubmit(name) {
 		this.setState({name});
 		socket.emit('join', name);
@@ -64,18 +60,24 @@ class App extends Component {
 			   		</div>
 			 	</div>
 			 	<div className={styles.AppBody}>
-			   		<UsersList
-				 		users={this.state.users}
-			   		/>
-			   		<div className={styles.MessageWrapper}>
-						<MessageList
-							messages={this.state.messages}
+					<div className={styles.LeftSide}>
+						<UsersList
+							users={this.state.users}
 						/>
-						<MessageForm
-							onMessageSubmit={message => this.handleMessageSubmit(message)}
-							name={this.state.name}
-						/>
-			   		</div>
+					</div>
+					<div className={styles.RightSide}>
+						<div className={styles.MessageListCont}>
+							<MessageList
+								messages={this.state.messages}
+							/>
+						</div>
+						<div className={styles.MessageSubmit}>
+							<MessageForm
+								onMessageSubmit={message => this.handleMessageSubmit(message)}
+								name={this.state.name}
+							/>
+						</div>
+					</div>
 			 	</div>
 		   	</div>
 		);

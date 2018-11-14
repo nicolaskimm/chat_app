@@ -1,16 +1,15 @@
 .Users {
     display: flex;
     flex: 1;
-    width: 25vw;
-    justify-content: flex-start;
     flex-direction: column;
     border-right: 1px solid #ccc;
 }
 
 .UsersOnline {
+    box-sizing: border-box;
+    border-bottom: 2px solid #8c310b;
     padding: 20px;
     text-align: center;
-    background: #ccc;
 }
 
 .UsersList {
@@ -19,8 +18,9 @@
 }
 
 .UserItem {
+    box-sizing: border-box;
     list-style: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px dotted #ccc;
     padding: 20px;
-    margin: 0 0 0 20px;
+    color: #8c310b;
 }

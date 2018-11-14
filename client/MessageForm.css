@@ -1,11 +1,16 @@
 .MessageForm {
+    min-width: 100%;
+    min-height: 100%;
     display: flex;
-    flex-direction: row;
+    flex: 1;
 }
 
+
 .MessageInput {
-    flex: 1;
-    padding: 20px;
-    border: 0;
-    border-top: 1px solid #ccc;
+    background-color: #092935e7;
+    width: 100%;
+    padding-left: 10px;
+    color: rgb(216, 219, 206);
 }
+
+

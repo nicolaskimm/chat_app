@@ -1,8 +1,30 @@
 .MessageList {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
     justify-content: flex-start;
-    width: 75vw;
-    padding: 20px;
+    overflow-y: auto;
+    padding-left: 10px;
 }
+
+.Message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    height: 100%;
+}
+
+.Nick {
+    font-weight: 800;
+    color: #8c310b;
+    letter-spacing: 0.5px;
+    font-size: 19px;
+    margin-right: 5px;
+}
+
+.MessageText {
+    font-size: 14px;
+}
+
+

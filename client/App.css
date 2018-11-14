@@ -1,47 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,800');
+
 body {
+    font-family: Raleway;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
+    color: rgb(216, 219, 206);
+    background-color:#072530;
 }
 
 .App {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;    
+    height: 90vh;
+    width: 70vw;
+    border: 2px solid rgb(216, 219, 206);
+}
+
+.RightSide {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    height: 100vh;
+    width: 70%;
+    height: 100%;
+}
+
+.LeftSide {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    background-color: #092935e7;
 }
 
 .AppHeader {
     display: flex;
+    height: 10%;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid #ccc;
-}
-
-.AppTitle {
-    display: flex;
-    width: 25vw;
-    border-right: 1px solid #ccc;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.AppRoom {
-    display: flex;
-    width: 75vw;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 20px;
+    border-bottom: 2px solid #8c310b;
 }
 
 .AppBody {
     display: flex;
     flex-direction: row;
+    height: 90%;
+}
+
+.AppRoom {
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.AppTitle {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.ChatBody {
+    display: flex;
+    flex-direction: row;
     flex: 1;
 }
 
-.MessageWrapper {
+.MessageListCont {
     display: flex;
     flex-direction: column;
-    width: 75vw;
-    flex: 1;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 90%;
+    box-sizing: border-box;
+    background-color: #0f3746d0;
 }
+
+.MessageSubmit {
+    box-sizing: border-box;
+    width: 100%;
+    height: 10%;
+    
+}
+
+
+
+
+
