@@ -2,6 +2,7 @@
   "name": "czat",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://nicolaskimm.github.io/chat_app",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.26.0",
