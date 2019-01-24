@@ -8,6 +8,7 @@ const io = socketIo(server);
 const UsersService = require('./UsersService');
 const userService = new UsersService();
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/chat', function(err){
 	if(err){
 		console.log(err)
@@ -73,6 +74,7 @@ io.on('connection', function(socket) {
 			id: socket.id,
 			name,
 		});
+
 		io.emit('update', {
 			users: userService.getAllUsers()
 		});
