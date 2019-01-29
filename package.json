@@ -2,7 +2,7 @@
   "name": "czat",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://nicolaskimm.github.io/chat_app/",
+  "homepage": "https://nicolaskimm.github.io/chat_app",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -25,16 +25,11 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.2"
   },
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "set NODE_ENV=production&webpack",
     "start": "node index.js",
     "webpack": "webpack-dev-server --inline --hot --config ./webpack.config.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC"

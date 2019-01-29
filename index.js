@@ -29,7 +29,7 @@ const Chat = mongoose.model('Message', chatSchema);
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/chat_app', function(req, res){
+app.get('/nicolaskimm.github.io/chat_app', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
