@@ -8,8 +8,10 @@ const io = socketIo(server);
 const UsersService = require('./UsersService');
 const userService = new UsersService();
 const mongoose = require('mongoose');
+const url = process.env.MONGOLAB_URI;
 
-mongoose.connect('mongodb://localhost/chat', function(err){
+
+mongoose.connect(url, function(err){
 	if(err){
 		console.log(err)
 	} else {
